@@ -9,5 +9,6 @@ export interface GitHubRepository {
   /** Primary language of the repository */
   language: string | null;
   /** Repository HTML URL */
+  stars: number;
   html_url: string;
 }

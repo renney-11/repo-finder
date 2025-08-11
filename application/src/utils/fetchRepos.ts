@@ -11,7 +11,10 @@ export async function fetchRepos(username: string): Promise<GitHubRepository[]> 
           nodes {
             name
             description
-            primaryLanguage { name }
+            primaryLanguage {
+              name
+            }
+            stargazerCount
             url
           }
         }
@@ -36,7 +39,8 @@ export async function fetchRepos(username: string): Promise<GitHubRepository[]> 
   return json.data.user.repositories.nodes.map((repo: any) => ({
     name: repo.name,
     description: repo.description,
-    language: repo.primaryLanguage?.name || null, // renamed to match type
-    html_url: repo.url, // renamed to match type
+    language: repo.primaryLanguage?.name || null,
+    stars: repo.stargazerCount,
+    html_url: repo.url,
   }));
 }
