@@ -5,19 +5,20 @@ export async function fetchRepos(username: string): Promise<GitHubRepository[]> 
   if (!token) throw new Error("GitHub token not found. Add NEXT_PUBLIC_GITHUB_TOKEN to .env.local");
 
   const query = `
-    query ($username: String!) {
-      user(login: $username) {
-        repositories(first: 20, orderBy: {field: CREATED_AT, direction: DESC}) {
-          nodes {
-            name
-            description
-            primaryLanguage { name }
-            url
-          }
+  query ($username: String!) {
+    user(login: $username) {
+      repositories(first: 20, orderBy: {field: CREATED_AT, direction: DESC}) {
+        nodes {
+          name
+          description
+          primaryLanguage { name }
+          stargazerCount
+          url
         }
       }
     }
-  `;
+  }
+`;
 
   const res = await fetch("https://api.github.com/graphql", {
     method: "POST",
@@ -35,8 +36,9 @@ export async function fetchRepos(username: string): Promise<GitHubRepository[]> 
 
   return json.data.user.repositories.nodes.map((repo: any) => ({
     name: repo.name,
-    description: repo.description,
-    language: repo.primaryLanguage?.name || null, // renamed to match type
-    html_url: repo.url, // renamed to match type
+  description: repo.description,
+  primaryLanguage: repo.primaryLanguage?.name || null,
+  stars: repo.stargazerCount,
+  url: repo.url,
   }));
 }
