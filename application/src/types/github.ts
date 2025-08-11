@@ -7,8 +7,8 @@ export interface GitHubRepository {
   /** Description of the repository */
   description: string | null;
   /** Primary language of the repository */
-  language: string | null;
+  primaryLanguage: string | null;
   /** Repository HTML URL */
   stars: number;
-  html_url: string;
+  url: string;
 }
