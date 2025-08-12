@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RepoList from '../components/RepoList';
+import type { GitHubRepository } from '@/types/github';
 
 const repos = [
   {
@@ -31,4 +32,33 @@ describe('RepoList', () => {
     expect(screen.getByText('10')).toBeInTheDocument();
     expect(screen.getByText('20')).toBeInTheDocument();
   });
+
+  it('renders empty state when no repos provided', () => {
+  render(<RepoList repos={[]} />);
+  expect(screen.queryByRole('listitem')).not.toBeInTheDocument();
+});
+
+it('shows default color for unknown language', () => {
+const unknownLangRepo: GitHubRepository = {
+  name: 'repo2',
+  url: 'https://github.com/user/repo2',
+  description: null,
+  primaryLanguage: "UnknownLang",
+  stars: 0,
+};
+render(<RepoList repos={[unknownLangRepo]} />);
+  const colorDot = screen.getByText('UnknownLang').previousSibling;
+  expect(colorDot).toHaveStyle('background-color: #94a3b8'); // fallback color
+});
+
+it('renders stars count with icon', () => {
+  const { container } = render(<RepoList repos={repos} />);
+  expect(screen.getByText('10')).toBeInTheDocument();
+  
+  // Instead of getAllByRole('img'), query all <svg> elements directly
+  const svgs = container.querySelectorAll('svg');
+  expect(svgs.length).toBeGreaterThan(0); // should find star SVGs
+});
+
+
 });
