@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import RepoItem from "../RepoItem";
+import RepoItem from "../components/RepoItem";
 import { mockRepos } from "./mockData";
 
 const meta: Meta<typeof RepoItem> = {
@@ -23,14 +23,14 @@ type Story = StoryObj<typeof RepoItem>;
 
 export const WithDescription: Story = {
   args: {
-    repo: mockRepos[0]
-  }
+    repo: mockRepos[0],
+  },
 };
 
 export const WithoutDescription: Story = {
   args: {
-    repo: mockRepos[2]
-  }
+    repo: mockRepos[2],
+  },
 };
 
 // Show multiple items to demonstrate list context
@@ -41,5 +41,5 @@ export const InList: Story = {
         <RepoItem key={index} repo={repo} />
       ))}
     </ul>
-  )
+  ),
 };
