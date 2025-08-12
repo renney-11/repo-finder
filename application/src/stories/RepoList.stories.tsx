@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import RepoList from "../RepoList";
+import RepoList from "../components/RepoList";
 import { mockRepos } from "./mockData";
 
 const meta: Meta<typeof RepoList> = {
@@ -7,8 +7,8 @@ const meta: Meta<typeof RepoList> = {
   component: RepoList,
   parameters: {
     layout: "centered",
-    backgrounds: { default: "light" }
-  }
+    backgrounds: { default: "light" },
+  },
 };
 export default meta;
 
@@ -16,12 +16,12 @@ type Story = StoryObj<typeof RepoList>;
 
 export const Default: Story = {
   args: {
-    repos: mockRepos
-  }
+    repos: mockRepos,
+  },
 };
 
 export const EmptyList: Story = {
   args: {
-    repos: []
-  }
+    repos: [],
+  },
 };

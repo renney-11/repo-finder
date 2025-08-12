@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import FilterBar from "../FilterBar";
+import FilterBar from "../components/FilterBar";
 
 const meta: Meta<typeof FilterBar> = {
   title: "Components/FilterBar",

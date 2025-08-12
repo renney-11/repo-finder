@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import LanguageFilter from "../LanguageFilter";
+import LanguageFilter from "../components/LanguageFilter";
 
 const languages = ["JavaScript", "TypeScript", "Python"];
 
