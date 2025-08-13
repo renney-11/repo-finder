@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
 
+/**
+ * Props for the SearchBar component.
+ */
 interface SearchBarProps {
-  /** Callback when the search form is submitted */
+  /** Callback function called when the search form is submitted. */
   onSearch: (username: string) => void;
 }
 
 /**
- * Renders a search input for entering a GitHub username.
+ * Renders a search input form for entering a GitHub username.
+ * Handles form submission and input validation.
+ * @param {SearchBarProps} props The component props.
+ * @return {JSX.Element} A form with text input and search button.
  */
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [inputValue, setInputValue] = useState('');
 
+  /**
+   * Handles form submission by preventing default behavior and calling onSearch.
+   * Only submits if input value is not empty after trimming whitespace.
+   * @param {React.FormEvent} e The form submission event.
+   */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (inputValue.trim()) {

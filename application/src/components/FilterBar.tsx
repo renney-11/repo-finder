@@ -1,14 +1,20 @@
 import React from 'react';
 
+/**
+ * Props for the FilterBar component.
+ */
 interface FilterBarProps {
   /** Current filter text */
   value: string;
-  /** Called when the filter text changes */
+  /** Callback function called when the filter text changes. */
   onChange: (value: string) => void;
 }
 
 /**
- * Text input that filters repositories by name in real time.
+ * Text input component that filters repositories by name in real time.
+ * Includes a clear button when text is present and proper accessibility labels.
+ * @param {FilterBarProps} props The component props.
+ * @return {JSX.Element} A text input with filter functionality.
  */
 const FilterBar: React.FC<FilterBarProps> = ({ value, onChange }) => {
   return (

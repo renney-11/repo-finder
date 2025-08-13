@@ -10,7 +10,10 @@ import { GitHubRepository } from '../types/github';
 import { fetchRepos } from '../utils/fetchRepos';
 
 /**
- * Home page for GitHub Repository Search.
+ * Home page component for GitHub Repository Search application.
+ * Provides search functionality for GitHub repositories by username,
+ * with filtering capabilities by repository name and programming language.
+ * @return {JSX.Element} The rendered home page component.
  */
 
 export default function Home() {
@@ -20,6 +23,12 @@ export default function Home() {
   const [filterName, setFilterName] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
 
+  /**
+   * Handles the search for repositories by GitHub username.
+   * Fetches repositories and updates component state accordingly.
+   * @param {string} username The GitHub username to search for.
+   * @return {Promise<void>} Promise that resolves when search is complete.
+   */
   const handleSearch = async (username: string) => {
     setLoading(true);
     setError(null);
@@ -38,7 +47,10 @@ export default function Home() {
     }
   };
 
-  // Get unique list of languages from repos
+  /**
+   * Computes unique list of programming languages from fetched repositories.
+   * @type {string[]} Sorted array of unique programming languages.
+   */
   const languages = useMemo(() => {
     const langs = repos
       .map((r) => r.primaryLanguage)
@@ -46,7 +58,10 @@ export default function Home() {
     return Array.from(new Set(langs)).sort();
   }, [repos]);
 
-  // Apply filters (name + language)
+  /**
+   * Filters repositories based on name and selected programming language.
+   * @type {GitHubRepository[]} Array of repositories matching filter criteria.
+   */
   const filteredRepos = useMemo(() => {
     return repos.filter((repo) => {
       const matchesName = repo.name

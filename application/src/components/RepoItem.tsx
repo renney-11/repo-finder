@@ -1,12 +1,19 @@
 import React from 'react';
 import { GitHubRepository } from '../types/github';
 
+/**
+ * Props for the RepoItem component.
+ */
 interface RepoItemProps {
+  /** The GitHub repository data to display. */
   repo: GitHubRepository;
 }
 
 /**
- * Displays a single repository's details.
+ * Displays a single repository's details in a container format.
+ * Shows repository name as a clickable link, description, and primary language.
+ * @param {RepoItemProps} props The component props.
+ * @return {JSX.Element} A styled repository item card.
  */
 const RepoItem: React.FC<RepoItemProps> = ({ repo }) => {
   return (
