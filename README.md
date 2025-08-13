@@ -54,3 +54,33 @@ Inside of application folder:
 5. **Open your browser:**
    - Navigate to `http://localhost:3000`
    - The application should now be running
+
+## Running the Test Suite
+
+### 1. Unit & Integration Tests
+
+From inside the `application` folder, run:
+```bash
+npm test
+```
+This command executes all test files and displays results in your terminal.
+
+### 2. Storybook (Visual Component Testing)
+
+Storybook is set up to visually preview and test components in isolation. 
+From inside the `application` folder, run:
+```bash
+npm run storybook
+```
+Then open your browser at the URL Storybook provides (usually [http://localhost:6006](http://localhost:6006)) to interactively browse and test components.
+
+### 3. Continuous Integration
+
+On each push, the CI pipeline automatically runs both the build and test steps to ensure code quality and prevent regressions. Which can be accessed in [Actions](https://github.com/renney-11/repo-finder/actions).
+
+## Future Improvements
+- **Search History**: Remember previous searches for quick access
+- **User Profiles**: Display user information alongside repositories
+- **Offline Support**: Cache data for offline browsing
+- **Analytics Dashboard**: Display repository statistics and trends
+- **Internationalization**: Implement multi-language support
