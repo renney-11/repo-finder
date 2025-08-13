@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push: # Run on all pushes to any branch
+  pull_request: # Still run for PRs
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript type check
+        run: npm run type-check
+        # Make sure package.json has:
+        # "type-check": "tsc --noEmit"
+
+      - name: Build project
+        run: npm run build
