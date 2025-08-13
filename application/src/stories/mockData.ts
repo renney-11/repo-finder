@@ -1,5 +1,11 @@
 import { GitHubRepository } from "../types/github";
 
+/**
+ * Mock repository data for testing and Storybook stories.
+ * Represents various repository scenarios including different languages,
+ * star counts, and description states.
+ * @const {!Array<!GitHubRepository>}
+ */
 export const mockRepos: GitHubRepository[] = [
   {
     name: "repo-finder",

@@ -1,14 +1,17 @@
 /**
- * GitHub Repository interface based on GitHub REST API v3.
+ * GitHub Repository interface based on GitHub REST API.
+ * Represents the essential data structure for repository information
+ * used throughout the application.
  */
 export interface GitHubRepository {
   /** Repository name */
   name: string;
   /** Description of the repository */
   description: string | null;
-  /** Primary language of the repository */
+  /** Primary programming language of the repository */
   primaryLanguage: string | null;
-  /** Repository HTML URL */
+  /** Number of stars the repository has received */
   stars: number;
+  /** HTML URL for external linking */
   url: string;
 }
