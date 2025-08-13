@@ -1,5 +1,5 @@
 # Github Repository Finder
-A modern React application for searching and filtering GitHub repositories by username. Built with Next.js, TypeScript, and Tailwind CSS.
+A modern React application for searching and filtering GitHub repositories by username. Built with Next.js, TypeScript, and Tailwind CSS. Can be accessed [here](https://repo-finder-wheat.vercel.app/).
 ## Description
 ### Project Overview
 This project is a web application that allows users to search for GitHub repositories by entering a username. The application fetches repository data using the GitHub GraphQL API and presents it in a clean, user-friendly interface. Users can filter repositories by name and programming language, making it easy to find specific projects.
