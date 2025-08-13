@@ -1,7 +1,9 @@
 import React from 'react';
 
 /**
- * Loading spinner component.
+ * Loading spinner component that displays a rotating blue circle.
+ * Used to indicate loading states throughout the application.
+ * @return {JSX.Element} An animated loading spinner.
  */
 const LoadingSpinner: React.FC = () => (
   <div className="flex justify-center items-center py-8">

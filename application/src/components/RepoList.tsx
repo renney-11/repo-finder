@@ -1,12 +1,19 @@
 import React from 'react';
 import { GitHubRepository } from '../types/github';
 
+/**
+ * Props for the RepoList component.
+ */
 interface RepoListProps {
+  /** Array of GitHub repositories to display. */
   repos: GitHubRepository[];
 }
 
 /**
  * Renders a list of repositories in a GitHub-like single-column list view.
+ * Each repository shows name, description, language with color indicator, and star count.
+ * @param {RepoListProps} props The component props.
+ * @return {JSX.Element} A styled list of repository items.
  */
 const RepoList: React.FC<RepoListProps> = ({ repos }) => {
   return (
@@ -55,6 +62,12 @@ const RepoList: React.FC<RepoListProps> = ({ repos }) => {
   );
 };
 
+/**
+ * Returns a color hex code for a given programming language.
+ * Used to display language indicators with appropriate colors.
+ * @param {string} language The programming language name.
+ * @return {string} Hex color code for the language.
+ */
 function getLanguageColor(language: string) {
   const map: Record<string, string> = {
     TypeScript: '#3178c6',

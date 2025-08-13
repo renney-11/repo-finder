@@ -2,12 +2,24 @@
 
 import React from "react";
 
+/**
+ * Props for the LanguageFilter component.
+ */
 interface LanguageFilterProps {
+  /** Array of available programming languages to filter by. */
   languages: string[];
+  /** Currently selected language filter value. */
   selectedLanguage: string;
+  /** Callback function called when a language is selected. */
   onSelectLanguage: (language: string) => void;
 }
 
+/**
+ * Dropdown component for filtering repositories by programming language.
+ * Displays all available languages with an "All languages" option.
+ * @param {LanguageFilterProps} props The component props.
+ * @return {JSX.Element} A labeled dropdown for language selection.
+ */
 export default function LanguageFilter({
   languages,
   selectedLanguage,
