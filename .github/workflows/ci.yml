@@ -1,3 +1,9 @@
+name: CI
+
+on:
+  push: # Run on all pushes to any branch
+  pull_request: # Still run for PRs
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,3 +29,4 @@ jobs:
 
       - name: Build project
         run: npm run build
+
